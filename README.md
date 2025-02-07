@@ -1,12 +1,18 @@
-## ##Build a Blog with a Comments Form
+## Build a Blog with a Comments Form
+
+---
 
 ![alt text](UserStories.png)
 
 ---
 
-## ![alt text](StretchGoals.png)
+![alt text](StretchGoals.png)
 
-##**Reflection**
+---
+
+## Reflection
+
+---
 
 Please also provide an assignment reflection in your project README.md file.
 
