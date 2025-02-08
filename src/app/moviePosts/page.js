@@ -25,13 +25,13 @@ export default async function MoviePostsPage({ searchParams }) {
           href="/moviePosts?sort=asc"
           className="text-emerald-500 hover:text-blue-700"
         >
-          Sort ascending
+          Previous(ascending)
         </Link>
         <Link
           href="/moviePosts?sort=desc"
           className="text-emerald-500 hover:text-blue-700"
         >
-          Sort descending
+          Recent(descending)
         </Link>
       </div>
       <div className="flex flex-wrap justify-center gap-6">

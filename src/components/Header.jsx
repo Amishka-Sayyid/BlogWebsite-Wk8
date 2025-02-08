@@ -12,6 +12,9 @@ export default function Header() {
         <Link href={"/moviePosts"} className={headerStyles.navLink}>
           Movies
         </Link>
+        <Link href={"/new-movie"} className={headerStyles.navLink}>
+          add Movie
+        </Link>
       </nav>
     </header>
   );
