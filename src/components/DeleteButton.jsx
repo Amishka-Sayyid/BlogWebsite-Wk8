@@ -9,7 +9,7 @@ export default function DeleteButton({ id }) {
     if (window.confirm("Are you sure you want to delete this movie?")) {
       setremove(true);
       try {
-        const res = await fetch(`/delete-movie/${id}`, {
+        const res = await fetch(`/api/delete-movie/${id}`, {
           method: "DELETE",
         });
 
