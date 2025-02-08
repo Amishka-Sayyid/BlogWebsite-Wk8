@@ -1,7 +1,7 @@
 import { db } from "@/utils/dbConnection";
 import Link from "next/link";
 import Image from "next/image";
-import NewComment from "../../new-comment";
+import NewComment from "../../../components/NewComment";
 export default async function SingleMoviePage({ params }) {
   const { id } = params;
 
