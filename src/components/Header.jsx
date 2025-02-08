@@ -8,6 +8,10 @@ export default function Header() {
         <Link href={"/"} className={headerStyles.navLink}>
           Home
         </Link>
+
+        <Link href={"/moviePosts"} className={headerStyles.navLink}>
+          Movies
+        </Link>
       </nav>
     </header>
   );
