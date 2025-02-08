@@ -13,7 +13,7 @@ export default function NewComment({ movieId }) {
     e.preventDefault();
 
     try {
-      const res = await fetch("/api/new-comment", {
+      const res = await fetch("/new-comment", {
         method: "POST",
         body: JSON.stringify({
           username: newUserComment.username,
@@ -55,6 +55,7 @@ export default function NewComment({ movieId }) {
         <input
           type="text"
           id="username"
+          name="username"
           value={newUserComment.username}
           onChange={handleInputChange}
           required
@@ -65,7 +66,9 @@ export default function NewComment({ movieId }) {
           Comment
         </label>
         <textarea
+          type="text"
           id="comment"
+          name="comment"
           value={newUserComment.comment}
           onChange={handleInputChange}
           required
