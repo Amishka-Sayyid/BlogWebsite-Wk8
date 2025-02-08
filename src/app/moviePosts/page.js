@@ -2,19 +2,38 @@ import { db } from "@/utils/dbConnection";
 import Link from "next/link";
 import Image from "next/image";
 
-export default async function MoviePostsPage() {
+export default async function MoviePostsPage({ searchParams }) {
+  const query = await searchParams;
+  console.log("searchParams", query);
+
   const movies = await db.query(`SELECT * FROM moviePosts`);
   console.log(movies);
 
   const wrangledMovies = movies.rows;
   console.log(wrangledMovies);
-
+  // reverse the posts array if the sort parameter is set to descending
+  if (query.sort === "desc") {
+    wrangledMovies.reverse();
+  }
   return (
     <>
       <h1 className="text-center text-3xl font-semibold mb-8">
         A list of all our available movies
       </h1>
-
+      <div className="flex justify-center gap-4 mb-8">
+        <Link
+          href="/moviePosts?sort=asc"
+          className="text-emerald-500 hover:text-blue-700"
+        >
+          Sort ascending
+        </Link>
+        <Link
+          href="/moviePosts?sort=desc"
+          className="text-emerald-500 hover:text-blue-700"
+        >
+          Sort descending
+        </Link>
+      </div>
       <div className="flex flex-wrap justify-center gap-6">
         {wrangledMovies.map((movie) => (
           <div
