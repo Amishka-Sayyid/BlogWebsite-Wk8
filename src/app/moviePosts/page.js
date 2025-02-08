@@ -1,7 +1,7 @@
 import { db } from "@/utils/dbConnection";
 import Link from "next/link";
 import Image from "next/image";
-
+import DeleteButton from "../../components/DeleteButton";
 export default async function MoviePostsPage({ searchParams }) {
   const query = await searchParams;
   console.log("searchParams", query);
@@ -52,6 +52,7 @@ export default async function MoviePostsPage({ searchParams }) {
                 {movie.title}
               </h2>
             </Link>
+            <DeleteButton id={movie.id} />
           </div>
         ))}
       </div>
