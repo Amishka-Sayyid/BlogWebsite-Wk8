@@ -1,9 +1,13 @@
 import { db } from "@/utils/dbConnection";
 
-export default async function handleDelete(req, { params }) {
+export default async function Delete(req, { params }) {
   const { id } = params;
-
+  console.log(`${id}`);
   try {
+    // Check if ID exists
+    if (!id) {
+      return res.status(400).json({ message: "Movie ID is required" });
+    }
     // Deleting
     const result = await db.query("DELETE FROM moviePosts WHERE id = $1", [id]);
 
