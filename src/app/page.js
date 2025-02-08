@@ -3,7 +3,7 @@ import mainstyles from "./home.module.css";
 export default function HomePage() {
   return (
     <div className={mainstyles.main}>
-      <h1>About us</h1>
+      <h1 className="text-center text-3xl font-semibold mb-8">About us</h1>
       <p>
         Welcome to <em>Movie Reviews</em>, your go-to destination for all things
         movies! Whether you are a casual viewer or a cinema enthusiast, our
