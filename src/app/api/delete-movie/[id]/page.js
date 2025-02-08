@@ -1,7 +1,7 @@
 import { db } from "@/utils/dbConnection";
 
-export default async function Delete(req, { params }) {
-  const { id } = params;
+export default async function handleDelete(req, res) {
+  const { id } = req.query;
   console.log(`${id}`);
   try {
     // Check if ID exists

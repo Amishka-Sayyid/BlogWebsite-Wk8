@@ -9,12 +9,12 @@ export default function DeleteButton({ id }) {
     if (window.confirm("Are you sure you want to delete this movie?")) {
       setremove(true);
       try {
-        const res = await fetch(`/api/delete-movie/${id}`, {
+        const response = await fetch(`/api/delete-movie/${id}`, {
           method: "DELETE",
         });
 
         // Check if the request was successful
-        if (res.ok) {
+        if (response.ok) {
           alert("Movie deleted successfully");
           revalidatePath("/moviePosts");
 
