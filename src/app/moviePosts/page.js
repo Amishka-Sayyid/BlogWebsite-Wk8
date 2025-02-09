@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Movie Reviews - Available Movies",
+  description: "Browse a list of available movies in our collection.",
+};
+
 import { db } from "@/utils/dbConnection";
 import Link from "next/link";
 import Image from "next/image";
