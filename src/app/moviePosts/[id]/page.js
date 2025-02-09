@@ -16,6 +16,7 @@ export default async function SingleMoviePage({ params }) {
   const wrangledMovie = movie.rows[0];
   console.log(wrangledMovie);
 
+  // user comment  handling formvalues
   async function handleSubmit(formValues) {
     "use server";
 
@@ -31,6 +32,14 @@ export default async function SingleMoviePage({ params }) {
     revalidatePath(`/moviePosts/${movieId}`);
     redirect(`/moviePosts/${movieId}`);
   }
+
+  // comments
+
+  const comments = await db.query(`SELECT * FROM comments WHERE postsId = $1`, [
+    id,
+  ]);
+
+  const wrangledComments = comments.rows;
 
   return (
     <div>
@@ -88,6 +97,20 @@ export default async function SingleMoviePage({ params }) {
               Submit Comment
             </button>
           </form>
+        </div>
+        <div className="mt-8 p-6 bg-gray-50 rounded-lg shadow-lg">
+          {/* here comments map */}
+          {wrangledComments.map((comment) => (
+            <div
+              key={comment.id}
+              className="bg-white p-4 rounded-lg shadow-sm mb-4 hover:shadow-md transition-shadow duration-200"
+            >
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                {comment.username}
+              </h3>
+              <p className="text-gray-600 text-base">{comment.comment}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
