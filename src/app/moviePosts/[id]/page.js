@@ -64,38 +64,38 @@ export default async function SingleMoviePage({ params }) {
 
       <div>
         <div>
-          <h2 className="text-center text-xl font-semibold mb-4">
-            Add a Comment
-          </h2>
-          <form action={handleSubmit} className="flex flex-col items-center">
-            <label htmlFor="username" className="mb-2">
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              required
-              className="mb-4 p-2 border border-gray-300 rounded-md"
-            />
+          <form action={handleSubmit}>
+            <fieldset className="flex flex-col items-center border-spacing-1 border-2 border-gray-300 rounded-md w-full p-6">
+              <legend className="text-xl font-bold mb-4;">Comment:</legend>
+              <label htmlFor="username" className="mb-2">
+                Username
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                required
+                className="mb-4 p-2 border border-gray-300 rounded-md"
+              />
 
-            <label htmlFor="comment" className="mb-2">
-              Comment
-            </label>
-            <textarea
-              type="text"
-              id="comment"
-              name="comment"
-              required
-              className="mb-4 p-2 border border-gray-300 rounded-md"
-            ></textarea>
+              <label htmlFor="comment" className="mb-2">
+                Comment
+              </label>
+              <textarea
+                type="text"
+                id="comment"
+                name="comment"
+                required
+                className="mb-4 p-2 border border-gray-300 rounded-md h-32"
+              ></textarea>
 
-            <button
-              type="submit"
-              className="bg-emerald-600 text-white py-2 px-4 rounded-md"
-            >
-              Submit Comment
-            </button>
+              <button
+                type="submit"
+                className="bg-emerald-600 text-white py-2 px-4 rounded-md"
+              >
+                Submit Comment
+              </button>
+            </fieldset>
           </form>
         </div>
         <div className="mt-8 p-6 bg-gray-50 rounded-lg shadow-lg">
