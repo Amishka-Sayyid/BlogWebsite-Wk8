@@ -32,6 +32,10 @@ _Optional_
 
 🎯 What useful external sources helped you complete the assignment (e.g Youtube tutorials)?
 
+    https://youtu.be/tSw75ybjJsg?si=tYSfCqjS9IIVgor7
+
+    https://youtu.be/wTGaoB8EL-4?si=iGKePS2r5ri3XlGo(after watching this i was doing the user form wrong sjhld have just added the form in the singlemovie page and handle it like how i was taught in class so deleted the comment in components and just did it as i mentioned earlier and it worked nxt ill do delete like that as my previous way wasn't working)
+
 🎯 What errors or bugs did you encounter while completing your assignment? How did you solve them?
 
 🎯 What went really well and what could have gone better?

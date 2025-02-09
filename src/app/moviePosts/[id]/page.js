@@ -1,7 +1,9 @@
 import { db } from "@/utils/dbConnection";
 import Link from "next/link";
 import Image from "next/image";
-import NewComment from "../../../components/NewComment";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+
 export default async function SingleMoviePage({ params }) {
   const { id } = params;
 
@@ -13,6 +15,22 @@ export default async function SingleMoviePage({ params }) {
 
   const wrangledMovie = movie.rows[0];
   console.log(wrangledMovie);
+
+  async function handleSubmit(formValues) {
+    "use server";
+
+    const username = formValues.get("username");
+    const comment = formValues.get("comment");
+    const movieId = id;
+
+    db.query(
+      `INSERT INTO comments (username, comment, postsId) VALUES ($1, $2, $3)`,
+      [username, comment, movieId]
+    );
+
+    revalidatePath(`/moviePosts/${movieId}`);
+    redirect(`/moviePosts/${movieId}`);
+  }
 
   return (
     <div>
@@ -36,7 +54,41 @@ export default async function SingleMoviePage({ params }) {
       </div>
 
       <div>
-        <NewComment movieId={wrangledMovie.id} />
+        <div>
+          <h2 className="text-center text-xl font-semibold mb-4">
+            Add a Comment
+          </h2>
+          <form action={handleSubmit} className="flex flex-col items-center">
+            <label htmlFor="username" className="mb-2">
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              required
+              className="mb-4 p-2 border border-gray-300 rounded-md"
+            />
+
+            <label htmlFor="comment" className="mb-2">
+              Comment
+            </label>
+            <textarea
+              type="text"
+              id="comment"
+              name="comment"
+              required
+              className="mb-4 p-2 border border-gray-300 rounded-md"
+            ></textarea>
+
+            <button
+              type="submit"
+              className="bg-emerald-600 text-white py-2 px-4 rounded-md"
+            >
+              Submit Comment
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
