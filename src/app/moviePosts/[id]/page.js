@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "Movie Reviews - Movie Details",
+  description:
+    "Discover the details of this movie, read its description, and share your thoughts with other movie lovers.",
+};
+
 import { db } from "@/utils/dbConnection";
 import Link from "next/link";
 import Image from "next/image";
@@ -99,18 +105,21 @@ export default async function SingleMoviePage({ params }) {
           </form>
         </div>
         <div className="mt-8 p-6 bg-gray-50 rounded-lg shadow-lg">
-          {/* here comments map */}
-          {wrangledComments.map((comment) => (
-            <div
-              key={comment.id}
-              className="bg-white p-4 rounded-lg shadow-sm mb-4 hover:shadow-md transition-shadow duration-200"
-            >
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                {comment.username}
-              </h3>
-              <p className="text-gray-600 text-base">{comment.comment}</p>
-            </div>
-          ))}
+          {wrangledComments.length > 0 ? (
+            wrangledComments.map((comment) => (
+              <div
+                key={comment.id}
+                className="bg-white p-4 rounded-lg shadow-sm mb-4 hover:shadow-md transition-shadow duration-200"
+              >
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {comment.username}
+                </h3>
+                <p className="text-gray-600 text-base">{comment.comment}</p>
+              </div>
+            ))
+          ) : (
+            <p>No comments yet. Be the first to comment!</p>
+          )}
         </div>
       </div>
     </div>

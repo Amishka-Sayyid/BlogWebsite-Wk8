@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Movie Reviews - Add a New Movie",
+  description: "Easily contribute new movies to our expanding database.",
+};
+
 import { db } from "@/utils/dbConnection";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

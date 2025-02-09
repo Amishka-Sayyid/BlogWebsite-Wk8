@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "Movie Reviews - homepage",
+  description:
+    "Welcome to Movie Reviews! Discover the latest films, share your thoughts, and engage with a community of movie lovers.",
+};
+
 // import Image from "next/image";
 import mainstyles from "./home.module.css";
 export default function HomePage() {
