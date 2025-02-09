@@ -20,15 +20,23 @@ _Required_
 
 🎯 What requirements did you achieve?
 
+    majority of the user stories requirement only the delete button has an issue so far but i attempted it.
+
 🎯 Were there any requirements or goals that you were unable to achieve?
 
+    Creating the delete button on posts that allows users to delete the post from the database. i tried making it work but still has an issue.
+
 🎯 If so, what was it that you found difficult about these tasks?
+
+    the client/server in next js differentiating them was a big problem for me.
 
 _Optional_
 
 🏹 Feel free to add any other reflections you would like to share about your submission, for example:
 
 🎯 Requesting feedback about a specific part of your submission.
+
+    what approach is the best to handle deletion please.
 
 🎯 What useful external sources helped you complete the assignment (e.g Youtube tutorials)?
 
