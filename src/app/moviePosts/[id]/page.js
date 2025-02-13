@@ -60,11 +60,19 @@ export default async function SingleMoviePage({ params }) {
         />
         <p>{wrangledMovie.content}</p>
 
-        <nav>
+        <nav className="flex  items-center justify-center p-2 gap-3">
+          <button>
+            <Link
+              href={`/moviePosts/${wrangledMovie.id}/update-movie`}
+              className="text-black-500 hover:bg-green-500 w-full mt-6 p-1 rounded-md border-2 bg-emerald-200"
+            >
+              Update-Movie
+            </Link>
+          </button>
           <button>
             <Link
               href="/moviePosts"
-              className="text-emerald-500 hover:text-blue-700 w-full mt-6 p-1 rounded-md border-2 bg-blue-300"
+              className="text-emerald-500 hover:text-blue-700 w-full mt-6 p-1 rounded-md border-2 bg-white"
             >
               Back to Movies
             </Link>
@@ -72,7 +80,7 @@ export default async function SingleMoviePage({ params }) {
           <button>
             <Link
               href={`/moviePosts/${wrangledMovie.id}/delete-movie`}
-              className="w-full  mt-6 p-1 text-gray-800 rounded-md border-2 bg-red-300 "
+              className="w-full hover:bg-red-500 mt-6 p-1 text-gray-800 rounded-md border-2 bg-red-300 "
             >
               delete-movie
             </Link>
