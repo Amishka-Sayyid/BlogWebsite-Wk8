@@ -30,7 +30,7 @@ export default async function SingleMoviePage({ params }) {
     const comment = formValues.get("comment");
     const movieId = id;
 
-    db.query(
+    await db.query(
       `INSERT INTO comments (username, comment, postsId) VALUES ($1, $2, $3)`,
       [username, comment, movieId]
     );
@@ -60,12 +60,24 @@ export default async function SingleMoviePage({ params }) {
         />
         <p>{wrangledMovie.content}</p>
 
-        <Link
-          href="/moviePosts"
-          className="text-emerald-500 hover:text-blue-700"
-        >
-          Back to Movies
-        </Link>
+        <nav>
+          <button>
+            <Link
+              href="/moviePosts"
+              className="text-emerald-500 hover:text-blue-700 w-full mt-6 p-1 rounded-md border-2 bg-blue-300"
+            >
+              Back to Movies
+            </Link>
+          </button>
+          <button>
+            <Link
+              href={`/moviePosts/${wrangledMovie.id}/delete-movie`}
+              className="w-full  mt-6 p-1 text-gray-800 rounded-md border-2 bg-red-300 "
+            >
+              delete-movie
+            </Link>
+          </button>
+        </nav>
       </div>
 
       <div>
@@ -104,6 +116,7 @@ export default async function SingleMoviePage({ params }) {
             </fieldset>
           </form>
         </div>
+
         <div className="mt-8 p-6 bg-gray-50 rounded-lg shadow-lg">
           {wrangledComments.length > 0 ? (
             wrangledComments.map((comment) => (
