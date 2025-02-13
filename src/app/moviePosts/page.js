@@ -6,8 +6,6 @@ export const metadata = {
 import { db } from "@/utils/dbConnection";
 import Link from "next/link";
 import Image from "next/image";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 export default async function MoviePostsPage({ searchParams }) {
   const query = await searchParams;
@@ -21,20 +19,6 @@ export default async function MoviePostsPage({ searchParams }) {
   // reverse the posts array if the sort parameter is set to descending
   if (query.sort === "desc") {
     wrangledMovies.reverse();
-  }
-  // Server side deletion
-  async function handleDelete(id) {
-    "use server";
-    const movieId = Number(id);
-
-    if (isNaN(movieId)) {
-      console.error("Invalid movie ID:", id);
-      return;
-    }
-
-    await db.query(`DELETE FROM moviePosts WHERE id = $1;`, [movieId]);
-    revalidatePath(`/moviePosts/`);
-    redirect(`/moviePosts/`);
   }
 
   return (
@@ -74,17 +58,6 @@ export default async function MoviePostsPage({ searchParams }) {
                 {movie.title}
               </h2>
             </Link>
-
-            {/* form for deleting movie */}
-            <form action={handleDelete} method="POST" className="inline-block">
-              <input type="hidden" name="id" value={movie.id} />
-              <button
-                type="submit"
-                className="text-red-600 hover:text-red-800 border-spacing-1"
-              >
-                Delete
-              </button>
-            </form>
           </div>
         ))}
       </div>
