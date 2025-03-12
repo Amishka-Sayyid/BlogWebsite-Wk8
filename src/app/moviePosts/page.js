@@ -31,30 +31,34 @@ export default async function MoviePostsPage({ searchParams }) {
           href="/moviePosts?sort=asc"
           className="text-emerald-500 hover:text-blue-700"
         >
-          Previous(ascending)
+          Previous (ascending)
         </Link>
         <Link
           href="/moviePosts?sort=desc"
           className="text-emerald-500 hover:text-blue-700"
         >
-          Recent(descending)
+          Recent (descending)
         </Link>
       </div>
       <div className="flex flex-wrap justify-center gap-6">
         {wrangledMovies.map((movie) => (
           <div
             key={movie.id}
-            className="flex flex-col items-center justify-center p-2 border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="flex flex-col items-center justify-start p-4 border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 w-full sm:w-64"
           >
-            <Image
-              src={movie.src}
-              alt={movie.title}
-              width={130}
-              height={100}
-              objectFit="contain"
-            />
+            {/* image container */}
+            <div className="w-full h-80 mb-4">
+              <Image
+                src={movie.src}
+                alt={movie.title}
+                width={160}
+                height={100}
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+            {/* Movie Title */}
             <Link href={`/moviePosts/${movie.id}`}>
-              <h2 className="mt-4 text-xl font-medium text-center text-gray-800 hover:text-blue-600">
+              <h2 className="text-xl font-medium text-center text-gray-800 hover:text-blue-600">
                 {movie.title}
               </h2>
             </Link>
